@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Feed {{ feed.name }}{% endblock %}
+
+{% block body %}
+    <h2 class="feed-name">{{ feed.name }}</h2>
+
+    <div class="feed-container">
+        <div class="feed-details">
+            <dl class="feed-details-list">
+                <dt>URL:</dt>
+                <dd>{{ feed.url }}</dd>
+            </dl>
+        </div>
+    </div>
+{% endblock %}
+

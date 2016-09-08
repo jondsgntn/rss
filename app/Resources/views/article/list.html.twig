@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="table">
+        <div class="row header">
+            <div class="cell">Article</div>
+            <div class="cell">Publish Date</div>
+            <div class="cell">Queued For Posting</div>
+        </div>
+        {% for article in articles %}
+        <div class="row">
+            <div class="cell">
+                <a href="{{ article.url }}" target="_blank">{{ article.name }}</a><br/>
+                <a href="{{ path('article_edit', {
+                    'id': article.id
+                }) }}">edit</a>
+            </div>
+            <div class="cell">{{ article.pubDate|date('h:ma') }}<br/>{{ article.pubDate|date('Y-m-d') }}</div>
+            <div class="cell" style="text-align:center;"><input type="checkbox"></div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
