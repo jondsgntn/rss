@@ -2,6 +2,7 @@
 
 {% block body %}
     {{ form_start(form) }}
+    {{ form_row(form._token) }}
     {{ form_widget(form) }}
     {{ form_rest(form) }}
     {{ form_end(form) }}
