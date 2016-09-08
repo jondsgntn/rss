@@ -15,7 +15,7 @@
                     'id': article.id
                 }) }}">edit</a>
             </div>
-            <div class="col-sm-4">{{ article.pubDate|date('h:ma') }}<br/>{{ article.pubDate|date('Y-m-d') }}</div>
+            <div class="col-sm-4">{{ article.pubDate|date('g:ia', 'America/Chicago') }}<br/>{{ article.pubDate|date('Y-m-d', 'America/Chicago') }}</div>
             <div class="col-sm-2" style="text-align:center;"><input type="checkbox"></div>
         </div>
         {% endfor %}
