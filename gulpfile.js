@@ -53,7 +53,7 @@ gulp.task('deploy', ['default'], function() {
     rsync({
         ssh: true,
         src: './',
-        dest: 'deploy@45.55.80.101:/home/deploy/rss',
+        dest: 'deploy@45.55.80.101:/var/www/rss',
         port: 22,
         recursive: true,
         syncDest: true,
