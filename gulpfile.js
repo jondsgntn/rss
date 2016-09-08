@@ -39,7 +39,7 @@ gulp.task('clean', function () {
     return gulp.src(['web/css/*', 'web/js/*', 'web/images/*', 'web/fonts/*'])
         .pipe(clean());
 });
-gulp.task('default', ['clean'], function () {
+gulp.task('default', function () {
     var tasks = ['images', 'fonts', 'less', 'lib-js', 'pages-js'];
     tasks.forEach(function (val) {
         gulp.start(val);

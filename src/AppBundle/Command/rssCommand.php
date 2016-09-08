@@ -36,16 +36,20 @@ class rssCommand extends ContainerAwareCommand
             $rss = $reader->getFeedContent($url);
             $items = $rss->getItems();
             foreach ( $items as $item ) {
-                $title = $item->getTitle();
-                $url = $item->GetLink();
-                $pubDate = $item->getUpdated();
-                $article = new Article();
-                $article->setName($title);
-                $article->setUrl($url);
-                $article->setPubDate($pubDate);
-                $output->writeln("Adding article: ".$title."\n");
-                $em->persist($article);
-                $em->flush();
+                $exists = $em->getRepository('AppBundle:Article')
+                    ->findOneBy(array('url' => $item->getLink()));
+                if (!$exists){
+                    $title = $item->getTitle();
+                    $url = $item->GetLink();
+                    $pubDate = $item->getUpdated();
+                    $article = new Article();
+                    $article->setName($title);
+                    $article->setUrl($url);
+                    $article->setPubDate($pubDate);
+                    $output->writeln("Adding article: ".$title."\n");
+                    $em->persist($article);
+                    $em->flush();
+                }
             }
         }
         $output->writeln("Finished adding articles");
