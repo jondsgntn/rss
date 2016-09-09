@@ -49,3 +49,21 @@ gulp.task('watch', function () {
     var less = gulp.watch('web-src/less/*.less', ['less']),
         js = gulp.watch('web-src/js/*.js', ['pages-js']);
 });
+gulp.task('deploy', ['default'], function() {
+    rsync({
+        ssh: true,
+        src: './',
+        dest: 'deploy@45.55.80.101:/var/www/rss',
+        port: 22,
+        recursive: true,
+        //include 3rd party JS libraries located in '/assets/js/lib'
+        //include: ['assets/js/lib'],
+        //exclude non-minified directories
+        exclude: ['web-src', 'node_modules', 'bower_components',
+            '.git', '.gitignore', '*.swp', 'var/cache', 'var/logs',
+            'vendor'],
+        args: ['--verbose']
+    }, function(error, stdout, stderr, cmd) {
+        console.log(stdout);
+    });
+});
