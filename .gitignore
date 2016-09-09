@@ -16,3 +16,10 @@
 /web/bundles/
 /bower_components/
 /node_modules/
+.idea/
+gulpfile.js
+bower.json
+composer.json
+composer.lock
+package.json
+phpunit.xml.dist
